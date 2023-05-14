@@ -15,7 +15,7 @@ You then must create a `.env` follow with the following:
 ```sh
 #!/bin/bash
 export GITHUB_USERNAME="<YOUR_GITHUB_USERNAME"
-export GITHUB_BEARER_TOKEN="<YOUR_GITHUB_API_TOKEN>
+export GITHUB_BEARER_TOKEN="<YOUR_GITHUB_API_TOKEN>"
 export GITHUB_DEFAULT_REPOSITORY_DESCRIPTION=""
 export LICENSE_COPYRIGHT="<YOUR_FULL_LEGAL_NAME>"
 ```
