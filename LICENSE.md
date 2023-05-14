@@ -1,1 +1,0 @@
-User already exists - to update values, please send a pull request on https://github.com/remy/mit-license
