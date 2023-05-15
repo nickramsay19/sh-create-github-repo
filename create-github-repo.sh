@@ -15,17 +15,16 @@ fi
 if [ ! -n "$1" ]; then
     echo "Error: No GitHub repository name was provided. Exiting."
     exit 1
-else
-    GITHUB_REPOSITORY_NAME="$1"
-fi
-
 # ensure directory doesn't already exist
-if [ -d $GITHUB_REPOSITORY_NAME ]; then
-    echo "Error: A directory with the name \"$GITHUB_USERNAME\" already exists. Exiting."
+elif [ -d $1 ]; then
+    echo "Error: A directory at \"$GITHUB_USERNAME\" already exists. Exiting."
     exit 1 
+else
+    REPOSITORY_LOCATION="$1"
+    GITHUB_REPOSITORY_NAME="$(basename $1)"
 fi
 
-echo "Creating repository \"$1\" for GitHub user \"$GITHUB_USERNAME\"."
+echo "Creating repository \"$GITHUB_REPOSITORY_NAME\" for GitHub user \"$GITHUB_USERNAME\"."
 
 # grab extra optional args
 if [ -n "$2" ]; then
@@ -46,9 +45,12 @@ curl -L \
     https://api.github.com/user/repos \
     -d "{\"name\": \"$GITHUB_REPOSITORY_NAME\", \"description\": \"$GITHUB_REPOSITORY_DESCRIPTION\", \"homepage\": \"https://github.com\", \"private\": false}" \
 
+echo "\"$GITHUB_REPOSITORY_NAME\" created successfully."
+
 # now setup the repo
-git clone git@github.com:"$GITHUB_USERNAME"/"$GITHUB_REPOSITORY_NAME".git
-cd $GITHUB_REPOSITORY_NAME
+echo "Cloning \"$GITHUB_REPOSITORY_NAME\" locally at location \"$REPOSITORY_LOCATION\"."
+git clone git@github.com:"$GITHUB_USERNAME"/"$GITHUB_REPOSITORY_NAME".git $REPOSITORY_LOCATION
+cd $REPOSITORY_LOCATION
 
 # create a README.md 
 echo "# "$GITHUB_REPOSITORY_NAME"" > README.md
