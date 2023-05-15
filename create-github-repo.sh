@@ -19,6 +19,12 @@ else
     GITHUB_REPOSITORY_NAME="$1"
 fi
 
+# ensure directory doesn't already exist
+if [ -d $GITHUB_REPOSITORY_NAME ]; then
+    echo "Error: A directory with the name \"$GITHUB_USERNAME\" already exists. Exiting."
+    exit 1 
+fi
+
 echo "Creating repository \"$1\" for GitHub user \"$GITHUB_USERNAME\"."
 
 # grab extra optional args
