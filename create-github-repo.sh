@@ -5,7 +5,7 @@ DIR=$(dirname $0)
 
 # load env
 if [ ! -r $DIR"/.env" ]; then
-    echo "Error: Script's .env file could not be found."
+    echo "Error: Script's .env file could not be found. Exiting."
     exit 1
 else
     source $DIR"/.env"
@@ -13,7 +13,7 @@ fi
 
 # ensure that a repository name has been provided
 if [ ! -n "$1" ]; then
-    echo "Error: No GitHub repository name was provided."
+    echo "Error: No GitHub repository name was provided. Exiting."
     exit 1
 else
     GITHUB_REPOSITORY_NAME="$1"
