@@ -33,3 +33,4 @@ You will need to enter you GitHub password.
 
 ## Todo
 * Add private repo creation 
+* Fix LICENSE.md bug
