@@ -20,9 +20,13 @@ export GITHUB_DEFAULT_REPOSITORY_DESCRIPTION=""
 export LICENSE_COPYRIGHT="<YOUR_FULL_LEGAL_NAME>"
 ```
 
-Now you may run
 ```sh
-sh create-github-repo.sh
+chmod +x create-github-repo
+```
+
+You may now run:
+```sh
+create-github-repo
 ```
 
 You will need to enter you GitHub password.
